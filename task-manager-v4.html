@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مهامي</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Noto+Sans+Arabic:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--side:#f9f9f9;--hov:#ececec;--inp:#f4f4f4;--tx:#0d0d0d;--mut:#6b6b6b;--line:#e5e5e5;--btn:#0d0d0d;--btnt:#fff;--g:#10a37f;--hi:#e5484d;--mid:#f5a524;--lo:#10a37f;--sh:0 2px 12px #0000001a}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#212121;--side:#171717;--hov:#2a2a2a;--inp:#303030;--tx:#ececec;--mut:#9b9b9b;--line:#363636;--btn:#fff;--btnt:#000;--sh:0 2px 12px #0008}}
+:root[data-theme=dark]{--bg:#212121;--side:#171717;--hov:#2a2a2a;--inp:#303030;--tx:#ececec;--mut:#9b9b9b;--line:#363636;--btn:#fff;--btnt:#000;--sh:0 2px 12px #0008}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{font-family:Inter,'Noto Sans Arabic',system-ui,sans-serif;background:var(--bg);color:var(--tx);font-size:16px;line-height:1.7;display:flex;overflow:hidden;-webkit-font-smoothing:antialiased}
+button{font:inherit;color:inherit;cursor:pointer;border:0;background:none}
+:focus-visible{outline:2px solid var(--g);outline-offset:2px}
+.i{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;flex:none}
+/* sidebar */
+aside{width:268px;background:var(--side);display:flex;flex-direction:column;padding:10px;flex:none;transition:margin .25s;z-index:5}
+aside.hide{margin-inline-start:-268px}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.ib{width:38px;height:38px;border-radius:9px;display:grid;place-items:center;color:var(--mut)}
+.ib:hover{background:var(--hov);color:var(--tx)}
+.row{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;width:100%;text-align:start;font-size:14.5px}
+.row:hover,.row.act{background:var(--hov)}
+.new{font-weight:500;margin-bottom:10px}
+.lbl{font-size:12px;font-weight:600;color:var(--mut);padding:14px 10px 6px}
+.lst{flex:1;overflow-y:auto}
+.t{display:flex;align-items:center;gap:8px;padding:6px 8px;border-radius:10px;font-size:14.5px}
+.t:hover{background:var(--hov)}
+.t .tt{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.t.done .tt{color:var(--mut);text-decoration:line-through}
+.dot{width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--c);display:grid;place-items:center;color:#fff;flex:none}
+.dot .i{width:11px;height:11px;stroke-width:3.2;opacity:0}
+.done .dot{background:var(--c)}.done .dot .i{opacity:1}
+.x{opacity:0;width:26px;height:26px;border-radius:7px;display:grid;place-items:center;color:var(--mut)}
+.x .i{width:16px;height:16px}
+.t:hover .x{opacity:1}.x:hover{color:var(--hi);background:var(--bg)}
+.due{font-size:11.5px;color:var(--mut);flex:none}
+.q{padding:4px 8px}
+.q input{width:100%;font:inherit;font-size:14.5px;background:var(--bg);color:var(--tx);border:1px solid var(--line);border-radius:10px;padding:8px 12px;outline:0}
+.q input:focus{border-color:var(--g)}
+.foot{border-top:1px solid var(--line);padding-top:8px;margin-top:6px}
+.meter{height:4px;background:var(--hov);border-radius:9px;margin:6px 10px 8px;overflow:hidden}
+.meter div{height:100%;width:0;background:var(--g);transition:width .5s}
+/* main */
+main{flex:1;min-width:0;display:flex;flex-direction:column;height:100vh;position:relative}
+.bar{display:flex;align-items:center;gap:6px;padding:10px 12px;min-height:56px}
+.model{font-weight:600;font-size:17px;padding:6px 12px;border-radius:10px;display:flex;gap:6px;align-items:center;color:var(--mut)}
+.model b{color:var(--tx);font-weight:600}
+.scroll{flex:1;overflow-y:auto}
+.col{max-width:760px;margin:auto;padding:12px 20px 24px}
+.hero{min-height:52vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:26px;padding-top:6vh}
+.hero h1{font-size:30px;font-weight:600}
+.sug{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;max-width:640px}
+.sug button{display:flex;gap:8px;align-items:center;border:1px solid var(--line);border-radius:18px;padding:10px 16px;font-size:14.5px;color:var(--mut);transition:.15s}
+.sug button:hover{background:var(--hov);color:var(--tx)}
+.msg{display:flex;gap:14px;margin:22px 0;animation:in .25s}
+@keyframes in{from{opacity:0;transform:translateY(6px)}}
+.msg.u{justify-content:flex-end}
+.msg.u .bub{background:var(--inp);border-radius:22px;padding:10px 18px;max-width:80%}
+.av{width:30px;height:30px;border-radius:50%;background:var(--g);color:#fff;display:grid;place-items:center;flex:none;margin-top:2px}
+.av .i{width:17px;height:17px}
+.msg.a .bub{flex:1;min-width:0;overflow-wrap:anywhere}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.acts span{font-size:13px;display:inline-flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:99px;padding:3px 12px;color:var(--mut)}
+.acts .i{width:14px;height:14px;color:var(--g)}
+.typing{display:flex;gap:5px;padding:12px 0}
+.typing i{width:8px;height:8px;border-radius:50%;background:var(--mut);animation:b 1.2s infinite}
+.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes b{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-4px)}}
+/* composer */
+.comp{padding:0 16px 10px}
+.box{max-width:760px;margin:auto;background:var(--inp);border-radius:28px;display:flex;align-items:flex-end;gap:6px;padding:8px 8px 8px 12px;box-shadow:var(--sh)}
+.box textarea{flex:1;min-width:0;border:0;background:none;resize:none;font:inherit;color:var(--tx);padding:9px 10px;max-height:180px;outline:0;line-height:1.6}
+::placeholder{color:var(--mut)}
+.send{width:38px;height:38px;border-radius:50%;background:var(--btn);color:var(--btnt);display:grid;place-items:center;flex:none;transition:opacity .15s}
+.send:disabled{opacity:.25;cursor:default}
+.note{text-align:center;font-size:12px;color:var(--mut);padding:8px}
+dialog{border:0;border-radius:20px;padding:24px;width:min(430px,92vw);background:var(--bg);color:var(--tx);box-shadow:0 0 0 1px var(--line),0 30px 80px #0008;font-family:inherit}
+dialog::backdrop{background:#0008}
+dialog h2{font-size:19px;margin-bottom:6px}dialog p{color:var(--mut);font-size:14px;margin-bottom:14px}
+dialog input{width:100%;font:inherit;color:var(--tx);background:var(--inp);border:0;border-radius:12px;padding:11px 14px;margin-bottom:10px;outline:0}
+.pill{padding:9px 18px;border-radius:99px;background:var(--btn);color:var(--btnt);font-weight:500;font-size:14.5px}
+.pill.g{background:var(--hov);color:var(--tx)}
+.ov{display:none}
+@media(max-width:820px){aside{position:fixed;inset-block:0;inset-inline-start:0;margin-inline-start:0;box-shadow:var(--sh)}aside.hide{margin-inline-start:-290px}.ov.on{display:block;position:fixed;inset:0;background:#0006;z-index:4}.hero h1{font-size:24px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol>
+<symbol id="plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+<symbol id="trash" viewBox="0 0 24 24"><path d="M3 6h18M8 6V4h8v2M6 6l1 14h10l1-14"/></symbol>
+<symbol id="spark" viewBox="0 0 24 24"><path d="M12 3l1.9 5.1L19 10l-5.1 1.9L12 17l-1.9-5.1L5 10l5.1-1.9zM19 16v4M17 18h4"/></symbol>
+<symbol id="key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12 20 3M16 7l3 3"/></symbol>
+<symbol id="moon" viewBox="0 0 24 24"><path d="M21 13A9 9 0 1 1 11 3a7 7 0 0 0 10 10z"/></symbol>
+<symbol id="side" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="3"/><path d="M9 4v16"/></symbol>
+<symbol id="up" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></symbol>
+<symbol id="edit" viewBox="0 0 24 24"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/></symbol>
+<symbol id="cal" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></symbol>
+<symbol id="list" viewBox="0 0 24 24"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></symbol>
+<symbol id="sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></symbol>
+</defs></svg>
+
+<div class="ov" id="ov"></div>
+<aside id="side">
+  <div class="top"><button class="ib" id="hideBtn" aria-label="إغلاق الشريط"><svg class="i"><use href="#side"/></svg></button><button class="ib" id="chatNew" aria-label="محادثة جديدة"><svg class="i"><use href="#edit"/></svg></button></div>
+  <button class="row new" id="newTask"><svg class="i"><use href="#plus"/></svg>مهمة جديدة</button>
+  <div class="q" id="q" hidden><input id="qi" placeholder="اكتب المهمة ثم Enter" maxlength="120"></div>
+  <div class="lst" id="lst"></div>
+  <div class="foot">
+    <div class="lbl" style="padding:4px 10px 0" id="prT"></div><div class="meter"><div id="bar2"></div></div>
+    <button class="row" id="themeBtn"><svg class="i"><use href="#moon"/></svg>تبديل المظهر</button>
+    <button class="row" id="setBtn"><svg class="i"><use href="#key"/></svg>مفتاح OpenAI</button>
+  </div>
+</aside>
+
+<main>
+  <div class="bar">
+    <button class="ib" id="showBtn" aria-label="فتح الشريط" hidden><svg class="i"><use href="#side"/></svg></button>
+    <div class="model"><b>مهامي</b> مساعد ذكي</div>
+  </div>
+  <div class="scroll" id="scroll"><div class="col" id="chat"></div></div>
+  <div class="comp">
+    <div class="box">
+      <button class="send" id="send" aria-label="إرسال" disabled><svg class="i"><use href="#up"/></svg></button>
+      <textarea id="inp" rows="1" placeholder="اسأل عن مهامك أو اطلب إضافة مهمة..."></textarea>
+    </div>
+    <div class="note">المساعد يضيف المهام ويكملها ويحذفها نيابةً عنك. تأكد من القائمة في الشريط الجانبي.</div>
+  </div>
+</main>
+
+<dialog id="setD">
+  <h2>مفتاح OpenAI</h2>
+  <p>يُحفظ في متصفحك فقط ولا يُرسل إلا إلى OpenAI. لا تشارك هذا الملف بعد إدخاله.</p>
+  <input id="key" type="password" placeholder="sk-..." dir="ltr" autocomplete="off">
+  <input id="model" dir="ltr" aria-label="النموذج">
+  <div style="display:flex;gap:8px"><button class="pill" id="saveKey">حفظ</button><button class="pill g" onclick="setD.close()">إلغاء</button></div>
+</dialog>
+
+<script>
+const $=id=>document.getElementById(id);
+const PL={high:'عالية',mid:'متوسطة',low:'منخفضة'},CL={high:'var(--hi)',mid:'var(--mid)',low:'var(--lo)'},NX={high:'mid',mid:'low',low:'high'};
+const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let tasks=store.get('tasks',[]),msgs=store.get('msgs',[]),busy=false;
+const ic=n=>`<svg class="i"><use href="#${n}"/></svg>`;
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const md=s=>esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\n/g,'<br>');
+const SUG=[['spark','قسّم هدفي إلى مهام صغيرة'],['list','رتّب أولويات مهامي'],['cal','خطط ليومي بناءً على مهامي'],['plus','أضف مهمة: مراجعة البريد غداً']];
+
+/* theme & sidebar */
+const th=store.get('theme','');if(th)document.documentElement.dataset.theme=th;
+$('themeBtn').onclick=()=>{const d=document.documentElement,dark=getComputedStyle(d).getPropertyValue('--bg').trim()==='#212121';d.dataset.theme=dark?'light':'dark';store.set('theme',d.dataset.theme)};
+const mob=()=>innerWidth<=820;
+function side(open){$('side').classList.toggle('hide',!open);$('showBtn').hidden=open;$('ov').classList.toggle('on',open&&mob())}
+$('hideBtn').onclick=()=>side(false);$('showBtn').onclick=()=>side(true);$('ov').onclick=()=>side(false);
+if(mob())side(false);
+
+/* tasks */
+function saveT(){store.set('tasks',tasks);renderT()}
+function renderT(){
+  const row=t=>`<div class="t ${t.done?'done':''}" style="--c:${CL[t.prio]}">
+    <button class="dot" data-a="t" data-id="${t.id}" aria-label="تبديل الحالة">${ic('check')}</button>
+    <span class="tt" title="${esc(t.title)}">${esc(t.title)}</span>${t.due?`<span class="due">${t.due.slice(5)}</span>`:''}
+    <button class="x" data-a="p" data-id="${t.id}" aria-label="تغيير الأولوية" title="الأولوية: ${PL[t.prio]}">${ic('list')}</button>
+    <button class="x" data-a="d" data-id="${t.id}" aria-label="حذف">${ic('trash')}</button></div>`;
+  const p=tasks.filter(t=>!t.done),d=tasks.filter(t=>t.done);
+  $('lst').innerHTML=(p.length?`<div class="lbl">قيد التنفيذ</div>`+p.map(row).join(''):'')+(d.length?`<div class="lbl">المكتملة</div>`+d.map(row).join(''):'')||'<div class="lbl">لا توجد مهام بعد. اطلب من المساعد أو أضف مهمة.</div>';
+  const pc=tasks.length?Math.round(d.length/tasks.length*100):0;
+  $('prT').textContent=`أُنجز ${d.length} من ${tasks.length} (${pc}%)`;$('bar2').style.width=pc+'%';
+}
+function add(title,prio,due){const id='t'+Date.now().toString(36)+Math.random().toString(36).slice(2,5);tasks.unshift({id,title:String(title).slice(0,120),prio:PL[prio]?prio:'mid',due:due||'',done:false});return id}
+$('lst').onclick=e=>{const b=e.target.closest('button');if(!b)return;const t=tasks.find(x=>x.id===b.dataset.id);if(!t)return;
+  if(b.dataset.a==='t')t.done=!t.done;else if(b.dataset.a==='p')t.prio=NX[t.prio];else tasks=tasks.filter(x=>x!==t);saveT()};
+$('newTask').onclick=()=>{$('q').hidden=false;$('qi').focus()};
+$('qi').onkeydown=e=>{if(e.key==='Enter'&&e.target.value.trim()){add(e.target.value.trim(),'mid');e.target.value='';$('q').hidden=true;saveT()}if(e.key==='Escape')$('q').hidden=true};
+
+/* settings */
+$('setBtn').onclick=()=>{$('key').value=store.get('key','');$('model').value=store.get('model','gpt-4o-mini');setD.showModal()};
+$('saveKey').onclick=()=>{store.set('key',$('key').value.trim());store.set('model',$('model').value.trim()||'gpt-4o-mini');setD.close()};
+
+/* chat */
+function renderC(typing){
+  if(!msgs.length&&!typing){$('chat').innerHTML=`<div class="hero"><h1>ما الذي تريد إنجازه اليوم؟</h1><div class="sug">${SUG.map(s=>`<button data-s="${s[1]}">${ic(s[0])}${s[1]}</button>`).join('')}</div></div>`;return}
+  $('chat').innerHTML=msgs.map(m=>m.role==='user'?`<div class="msg u"><div class="bub">${md(m.content)}</div></div>`
+    :`<div class="msg a"><div class="av">${ic('spark')}</div><div class="bub">${md(m.content)}${m.acts&&m.acts.length?`<div class="acts">${m.acts.map(a=>`<span>${ic('check')}${esc(a)}</span>`).join('')}</div>`:''}</div></div>`).join('')
+    +(typing?`<div class="msg a"><div class="av">${ic('spark')}</div><div class="typing"><i></i><i></i><i></i></div></div>`:'');
+  $('scroll').scrollTop=$('scroll').scrollHeight;
+}
+$('chat').onclick=e=>{const b=e.target.closest('[data-s]');if(b)go(b.dataset.s)};
+$('chatNew').onclick=()=>{msgs=[];store.set('msgs',msgs);renderC()};
+const inp=$('inp');
+inp.oninput=()=>{inp.style.height='auto';inp.style.height=Math.min(inp.scrollHeight,180)+'px';$('send').disabled=!inp.value.trim()||busy};
+inp.onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();if(inp.value.trim())go(inp.value.trim())}};
+$('send').onclick=()=>go(inp.value.trim());
+
+async function go(text){
+  if(!text||busy)return;
+  inp.value='';inp.style.height='auto';busy=true;$('send').disabled=true;
+  msgs.push({role:'user',content:text});renderC(true);
+  const key=store.get('key','');
+  try{
+    if(!key){setTimeout(()=>$('setBtn').click(),300);throw new Error('أدخل مفتاح OpenAI من الإعدادات أولاً ثم أعد المحاولة.')}
+    const today=new Date().toISOString().slice(0,10);
+    const sys=`أنت مساعد إدارة مهام ودود يتحدث العربية. اليوم ${today}. المهام الحالية:\n${tasks.map(t=>`[${t.id}] ${t.title} | أولوية:${t.prio} | موعد:${t.due||'-'} | ${t.done?'مكتملة':'قيد التنفيذ'}`).join('\n')||'(لا توجد)'}\nأجب بإيجاز وبشكل مفيد. نفّذ طلبات التعديل عبر الحقول. أجب دائماً بكائن JSON فقط: {"reply":string,"add":[{"title":string,"prio":"high"|"mid"|"low","due":"YYYY-MM-DD أو فارغ"}],"complete":[ids],"delete":[ids]} واترك المصفوفات فارغة إذا لم يُطلب تعديل.`;
+    const r=await fetch('https://api.openai.com/v1/chat/completions',{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+key},
+      body:JSON.stringify({model:store.get('model','gpt-4o-mini'),response_format:{type:'json_object'},messages:[{role:'system',content:sys},...msgs.slice(-10).map(m=>({role:m.role,content:m.content}))]})});
+    const d=await r.json();if(!r.ok)throw new Error(d.error?.message||'فشل الاتصال بـ OpenAI');
+    let o;try{o=JSON.parse(d.choices[0].message.content)}catch(e){o={reply:d.choices[0].message.content}}
+    const acts=[];
+    (o.add||[]).forEach(a=>{if(a&&a.title){add(a.title,a.prio,/^\d{4}-\d\d-\d\d$/.test(a.due)?a.due:'');acts.push('أُضيفت: '+a.title)}});
+    (o.complete||[]).forEach(id=>{const t=tasks.find(x=>x.id===id);if(t){t.done=true;acts.push('أُنجزت: '+t.title)}});
+    (o.delete||[]).forEach(id=>{const t=tasks.find(x=>x.id===id);if(t){tasks=tasks.filter(x=>x!==t);acts.push('حُذفت: '+t.title)}});
+    saveT();msgs.push({role:'assistant',content:o.reply||'تم.',acts});
+  }catch(e){msgs.push({role:'assistant',content:'تعذّر التنفيذ: '+e.message})}
+  store.set('msgs',msgs.slice(-40));busy=false;renderC();inp.focus();
+}
+renderT();renderC();
+</script>
+</body>
+</html>
